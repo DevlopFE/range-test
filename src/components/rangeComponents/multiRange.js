@@ -5,8 +5,8 @@ import { LabelRange } from './labelRange';
 
 export const MultiRange = ({minValue, maxValue}) => {
 
-  const INIT_POSITION_MIN = minValue || 0;
-  const INIT_POSITION_MAX = maxValue || 300;
+  const INIT_POSITION_MIN = minValue;
+  const INIT_POSITION_MAX = maxValue;
   const LIMIT = 300
   const minColor='#282c34';
   const maxColor='rgb(228, 164, 108)';
@@ -29,30 +29,22 @@ export const MultiRange = ({minValue, maxValue}) => {
     }
   }, []);
 
-  const onMouseUpLeft = useCallback(() => {
+  const onMouseDownRight = useCallback((e) => {
+    if ( dragHeadRefMax.current && dragHeadRefMax.current.contains(e.target)){
+      isDraggingMax.current = true;
+      dragHeadRefMax.current.style.backgroundColor = maxColor;
+      dragHeadRefMax.current.style.transition = "transform .2s";
+      dragHeadRefMax.current.style.transform = "scale(1.2)";
+    }
+  }, []);
+
+
+  const onMouseUpLeft = useCallback((e) => {
     if (isDraggingMin.current) {
       isDraggingMin.current = false;
       dragHeadRefMin.current.style.backgroundColor = minColor;
       dragHeadRefMin.current.style.transition = "transform .2s";
       dragHeadRefMin.current.style.transform = "scale(1)";
-    }
-  }, []);
-
-  const onMouseMoveLeft = useCallback( (e) => {
-    if (isDraggingMin.current) {
-      setPositionMin((positionMin) => positionMin + e.movementX);
-    }
-  }, []);
-
-  const onMouseDownRight = useCallback((e) => {
-    if (
-      dragHeadRefMax.current &&
-      dragHeadRefMax.current.contains(e.target)
-    ) {
-      dragHeadRefMax.current.style.backgroundColor = maxColor;
-      dragHeadRefMax.current.style.transition = "transform .2s";
-      dragHeadRefMax.current.style.transform = "scale(1.2)";
-      isDraggingMax.current = true;
     }
   }, []);
 
@@ -65,9 +57,15 @@ export const MultiRange = ({minValue, maxValue}) => {
     }
   }, []);
 
+  const onMouseMoveLeft = useCallback( (e) => {
+    if (isDraggingMin.current) {
+      setPositionMin((positionMin) =>  positionMin + e.movementX);
+    }
+  }, []);
+
+
   const onMouseMoveRight = useCallback( (e) => {
     if (isDraggingMax.current) {
-
       setPositionMax((positionMax) => positionMax + e.movementX);
     }
   }, []);
@@ -135,21 +133,22 @@ export const MultiRange = ({minValue, maxValue}) => {
   
 
   useEffect(() => {
-    if(positionMin < INIT_POSITION_MIN ){
+    if(isDraggingMin.current && positionMin <= INIT_POSITION_MIN ){
       setPositionMin(INIT_POSITION_MIN)
-      return
     }
-    if(positionMin >= positionMax ){
-      setPositionMin(positionMax )
-      return
+    if(isDraggingMin.current && positionMin >= positionMax  ){
+      setPositionMin(positionMax)
+      isDraggingMax.current = false;
     }
-    if(positionMax > INIT_POSITION_MAX ){
+    if(isDraggingMax.current && positionMax <= positionMin ){
+      setPositionMax(positionMin)
+      isDraggingMin.current = false;
+    }
+    if(isDraggingMax.current && positionMax >= INIT_POSITION_MAX ){
       setPositionMax(INIT_POSITION_MAX)
-      return
     }
-    if(positionMax <= positionMin ){
-      setPositionMax(positionMax)
-      return
+    if(isDraggingMax.current && positionMax <= INIT_POSITION_MIN ){
+      setPositionMax(INIT_POSITION_MIN)
     }
   }, [positionMin, positionMax, INIT_POSITION_MIN, INIT_POSITION_MAX])
 
@@ -166,7 +165,7 @@ export const MultiRange = ({minValue, maxValue}) => {
             position={positionMin}
           /> 
           <LabelRange className='minvalue-label' onClick={handleClickMin} sign={'$'} />
-          <BulletRange bulletRef={dragHeadRefMin}  position={positionMin} className='minvalue-bullet' />
+          <BulletRange bulletRef={dragHeadRefMin} minValue={minValue} maxValue={maxValue} limit={LIMIT} position={positionMin} className='minvalue-bullet' />
 
 
           <InputRange 
@@ -177,7 +176,7 @@ export const MultiRange = ({minValue, maxValue}) => {
             position={positionMax}
           /> 
           <LabelRange className='maxvalue-label' onClick={handleClickMax} sign={'$'} />
-          <BulletRange bulletRef={dragHeadRefMax}  position={positionMax} className='maxvalue-bullet' />
+          <BulletRange bulletRef={dragHeadRefMax} minValue={minValue} maxValue={maxValue} limit={LIMIT} position={positionMax} className='maxvalue-bullet' />
 
         </div>
       </div>
