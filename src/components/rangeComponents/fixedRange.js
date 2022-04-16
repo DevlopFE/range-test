@@ -4,7 +4,7 @@ import { BulletRange } from './bulletRange';
 import { LabelRange } from './labelRange';
 
 export const FixedRange = ({ values }) => {
-console.log('values', values)
+
   const INIT_POSITION_MIN = values[0];
   const INIT_POSITION_MAX = values[values.length - 1];
   const LIMIT = 300
@@ -64,8 +64,6 @@ console.log('values', values)
 
   const onMouseMoveLeft = useCallback( (e) => {
     if (isDraggingMin.current) {
-      console.log({ positionMin });
-      console.log('e.movementX', e.movementX)
       const valueToCheck =e.movementX*5;
 
           if(valueToCheck > 0 && positionMin < positionMax && step < steps.length-1){

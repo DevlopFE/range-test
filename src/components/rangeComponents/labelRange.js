@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const LabelRange = React.forwardRef( ({ sign, ...props}) => {
+export const LabelRange = ({ sign, ...props}) => {
   
   return (
     <div {...props} >{sign}</div>
   )
-})
+}
