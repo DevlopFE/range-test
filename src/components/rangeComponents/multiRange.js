@@ -70,31 +70,6 @@ export const MultiRange = ({minValue, maxValue}) => {
     }
   }, []);
 
-  const onMouseChangeMin =  (e) => {
-    setPositionMin(parseInt(e.target.value));
-}
-
-  const onMouseChangeMax =  (e) => {
-      setPositionMax(parseInt(e.target.value));
-   }
-
-   const handleClickMin = () => {
-    inputMin.current.focus()
-   }
-
-   const handleClickMax = () => {
-    inputMax.current.focus()
-   }
-
-  const handleKeyPressMin = (e) => {
-    if (e.key === 'Enter') {
-      if (inputMin.current.value <= positionMax && inputMin.current.value !== ''){
-    e.target.blur()
-      }else{
-         setPositionMin(INIT_POSITION_MIN);
-      }
-    } 
-  }
 
   useEffect(() => {
     document.addEventListener("mouseup", onMouseUpLeft);
@@ -119,17 +94,6 @@ export const MultiRange = ({minValue, maxValue}) => {
   }, [onMouseMoveRight, onMouseDownRight, onMouseUpRight]);
 
 
-  useEffect(() => {
-    if(isNaN(positionMax)){
-     return
-    }
-  }, [positionMax])
-
-  useEffect(() => {
-    if(isNaN(positionMin)){
-     return
-    }
-  }, [positionMin])
   
 
   useEffect(() => {
@@ -160,22 +124,18 @@ export const MultiRange = ({minValue, maxValue}) => {
           <InputRange 
             className='minvalue-input'
             inputRef={inputMin} 
-            onMouseChange={onMouseChangeMin}
-            handleKeyPress={handleKeyPressMin}
             position={positionMin}
           /> 
-          <LabelRange className='minvalue-label' onClick={handleClickMin} sign={'$'} />
+          <LabelRange className='minvalue-label' sign={'$'} />
           <BulletRange bulletRef={dragHeadRefMin} minValue={minValue} maxValue={maxValue} limit={LIMIT} position={positionMin} className='minvalue-bullet' />
 
 
           <InputRange 
             className='maxvalue-input'
             inputRef={inputMax} 
-            onMouseChange={onMouseChangeMax}
-            //handleKeyPress={()=> {}}
             position={positionMax}
           /> 
-          <LabelRange className='maxvalue-label' onClick={handleClickMax} sign={'$'} />
+          <LabelRange className='maxvalue-label' sign={'$'} />
           <BulletRange bulletRef={dragHeadRefMax} minValue={minValue} maxValue={maxValue} limit={LIMIT} position={positionMax} className='maxvalue-bullet' />
 
         </div>
