@@ -1,7 +1,7 @@
 import React from 'react'
 import { MultiRange } from './rangeComponents/multiRange'
 import { BASE_URL } from '../config'
-import { useFetch } from './hooks/useFetch';
+import { useFetch } from '../hooks/useFetch';
 import { Loader } from '../commons/loader';
 
 export const RangeFree = () => {

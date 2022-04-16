@@ -1,7 +1,7 @@
 import React from 'react'
 import { FixedRange } from './rangeComponents/fixedRange'
 import { BASE_URL } from '../config'
-import { useFetch } from './hooks/useFetch';
+import { useFetch } from '../hooks/useFetch';
 import { Loader } from '../commons/loader';
 
 export const RangeFixed = () => {
