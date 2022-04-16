@@ -20,7 +20,9 @@
     justify-content: center;
     margin: 3em auto;
     max-width: 500px;
+    min-width: 250px;
     position: relative;
+    width: 360px;
   }
 }
 
@@ -36,7 +38,8 @@
     background: $secondaryColor;
     height: 5px;
     position: absolute;
-    width: 300px;
+    width: 200px;
+    margin-left: -20px;
   }
 
   .common-label{
@@ -45,6 +48,7 @@
     height: 7px;
     position: absolute;
     width: 30px;
+    margin-left: -10px;
   }
 
   .minvalue-label{
@@ -67,7 +71,7 @@
 
   .minvalue-input{
     @extend .common-input;
-    left: -35px;
+    left: -45px;
     width: 55px;
   }
 

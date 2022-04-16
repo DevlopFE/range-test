@@ -379,7 +379,7 @@ code {
   font-size: 2.5rem;
   font-weight: bolder;
   margin: 1rem auto;
-  color: #F7F7F7;
+  color: #e4a46c;
 }
 
 @media screen and (min-width: 768px) {
@@ -435,46 +435,132 @@ code {
 }
 
 .main-layout nav ul li a {
-  color: #fff;
+  color: gray;
   font-size: 1.2rem;
   text-decoration: none;
 }
 
+.main-layout nav ul li a:hover {
+  color: #e4a46c;
+}
+
 .main-layout .nav-active {
-  color: gray;
+  color: #fff;
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
 
 .container {
-  width: 100%;
-  margin-top: 70px;
   background: #fff;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-top: 70px;
   text-align: center;
+  width: 100%;
 }
 
 .container header {
+  color: #282c34;
   font-size: 2rem;
   text-align: center;
-  color: #282c34;
 }
 
 .container main {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 250px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  max-width: 500px;
-  height: 250px;
-  -webkit-box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
   margin: 3em auto;
+  max-width: 500px;
+  min-width: 250px;
+  position: relative;
+  width: 360px;
+}
+
+.range-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.range-container .range-slider {
+  background: #282c34;
+  height: 5px;
+  position: absolute;
+  width: 200px;
+  margin-left: -20px;
+}
+
+.range-container .common-label, .range-container .minvalue-label, .range-container .maxvalue-label {
+  bottom: 5px;
+  cursor: pointer;
+  height: 7px;
+  position: absolute;
+  width: 30px;
+  margin-left: -10px;
+}
+
+.range-container .minvalue-label {
+  left: -55px;
+}
+
+.range-container .maxvalue-label {
+  right: -50px;
+}
+
+.range-container .common-input, .range-container .minvalue-input, .range-container .maxvalue-input {
+  background-color: transparent;
+  border: none;
+  bottom: -8px;
+  height: 20px;
+  position: absolute;
+}
+
+.range-container .minvalue-input {
+  left: -45px;
+  width: 55px;
+}
+
+.range-container .maxvalue-input {
+  right: -75px;
+  width: 30px;
+}
+
+.range-container .common-bullet, .range-container .minvalue-bullet, .range-container .maxvalue-bullet {
+  border-radius: 50%;
+  height: 20px;
+  position: relative;
+  -webkit-transition: left 0.1s ease-out;
+  transition: left 0.1s ease-out;
+  width: 20px;
+}
+
+.range-container .minvalue-bullet {
+  background: #282c34;
+  top: -7px;
+}
+
+.range-container .maxvalue-bullet {
+  background-color: #e4a46c;
+  left: 300px;
+  top: -27px;
 }
 /*# sourceMappingURL=App.css.map */
