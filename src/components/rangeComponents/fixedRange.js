@@ -7,7 +7,7 @@ export const FixedRange = ({ values }) => {
 
   const INIT_POSITION_MIN = values[0];
   const INIT_POSITION_MAX = values[values.length - 1];
-  const LIMIT = 300
+  const LIMIT = 200
   const minColor='#282c34';
   const maxColor='rgb(228, 164, 108)';
   const isDraggingMin = useRef(false);

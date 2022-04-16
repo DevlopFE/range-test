@@ -7,7 +7,7 @@ export const MultiRange = ({minValue, maxValue}) => {
 
   const INIT_POSITION_MIN = minValue;
   const INIT_POSITION_MAX = maxValue;
-  const LIMIT = 300
+  const LIMIT = 200
   const minColor='#282c34';
   const maxColor='rgb(228, 164, 108)';
   const isDraggingMin = useRef(false);
