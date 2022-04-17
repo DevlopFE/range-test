@@ -1,8 +1,8 @@
 import React from 'react'
-import { MultiRange } from './rangeComponents/multiRange'
 import { BASE_URL } from '../config'
 import { useFetch } from '../hooks/useFetch';
 import { Loader } from '../commons/loader';
+import { Range } from './rangeComponents/range';
 
 export const RangeFree = () => {
   const URL = `${BASE_URL}/normal-range`
@@ -14,7 +14,7 @@ export const RangeFree = () => {
       <main>
         {isLoading && <Loader />}
         {error && <p>{error}</p>}
-        {response && <MultiRange minValue={response.min} maxValue={response.max} />}
+        {response && <Range minValue={response.min || 0} maxValue={response.max || 100} />}
       </main>
   </div>
   )
