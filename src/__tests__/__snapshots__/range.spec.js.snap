@@ -1,46 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Range should render correctly 1`] = `
-<div>
-  <div
-    class="range-container"
-  >
-    <div
-      class="range-slider"
-    >
-      <input
-        class="minvalue-input"
-        readonly=""
-        value="0"
-      />
-      <div
-        class="minvalue-label"
-      >
-        $
-      </div>
-      <div
-        class="minvalue-bullet"
-        style="left: 0px;"
-      />
-      <input
-        class="maxvalue-input"
-        readonly=""
-        value="100"
-      />
-      <div
-        class="maxvalue-label"
-      >
-        $
-      </div>
-      <div
-        class="maxvalue-bullet"
-        style="left: 200px;"
-      />
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Range should render correctly in fixed mode 1`] = `
 <div>
   <div

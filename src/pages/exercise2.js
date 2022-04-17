@@ -1,8 +1,8 @@
 import React from 'react'
 import { BASE_URL } from '../config'
 import { useFetch } from '../hooks/useFetch';
-import { Loader } from '../commons/loader';
-import { Range } from './rangeComponents/range';
+import { Loader } from '../components/commons/loader';
+import { Range } from '../components/rangeComponents/range';
 
 export const RangeFree = () => {
   const URL = `${BASE_URL}/normal-range`

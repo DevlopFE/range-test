@@ -6,8 +6,8 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import { RangeFixed } from './exercise1';
-import { RangeFree } from './exercise2';
+import { RangeFixed } from '../../pages/exercise1';
+import { RangeFree } from '../../pages/exercise2';
 
 export const Navigation = () => {
   return (
