@@ -14,7 +14,7 @@ export const Navigation = () => {
     <BrowserRouter>
       <div className="main-layout">
         <nav>
-            <div className='title'>Range</div>
+            <div className='title'>{`< Range />`}</div>
           <ul>
             <li>
               <NavLink to="/exercise1" className={({isActive}) => isActive ? "nav-active": ''} >Exercise 1</NavLink>
