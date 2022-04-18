@@ -5,8 +5,7 @@ import { Loader } from '../components/commons/loader';
 import { Range } from '../components/rangeComponents/range';
 
 export const RangeFixed = () => {
-  const URL = `${BASE_URL}/fixed-range`
-  const {isLoading, response, error } = useFetch(URL)
+  const {isLoading, response, error } = useFetch(BASE_URL)
   const VALUES_DEFAULT = [0,25,50,100, 200, 299]
 
   return (
